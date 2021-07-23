@@ -4,27 +4,28 @@ import { filterAllTodos, filterCompletedTodos, filterActiveTodos } from '../../f
 import './filterButtons.sass';
 
 const FilterButtons = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const active = useSelector(state => state.todos.active);
 
-  // const handleFilterAllTodos = () => {
-  //   dispatch(filterAllTodos(todos));
-  // }
 
-  // const handleFilterCompletedTodos = () => {
-  //   dispatch(filterCompletedTodos(todos));
-  // }
+  const handleFilterAllTodos = () => {
+    dispatch(filterAllTodos());
+  }
 
-  // const handleFilterActiveTodos = () => {
-  //   dispatch(filterActiveTodos(todos));
-  // }
+  const handleFilterCompletedTodos = () => {
+    dispatch(filterCompletedTodos());
+  }
+
+  const handleFilterActiveTodos = () => {
+    dispatch(filterActiveTodos());
+  }
 
   return (
     <div className="filterButtons">
       <button
         className={active === 'all' ? "filterButtons__button active" : "filterButtons__button"}
         type="button"
-        // onClick={handleFilterAllTodos}
+        onClick={handleFilterAllTodos}
       >
         All
       </button>
@@ -32,7 +33,7 @@ const FilterButtons = () => {
       <button
         className={active === 'completed' ? "filterButtons__button active" : "filterButtons__button"}
         type="button"
-        // onClick={handleFilterCompletedTodos}
+        onClick={handleFilterCompletedTodos}
       >
         Completed
       </button>
@@ -40,7 +41,7 @@ const FilterButtons = () => {
       <button
         className={active === 'active' ? "filterButtons__button active" : "filterButtons__button"}
         type="button"
-        // onClick={handleFilterActiveTodos}
+        onClick={handleFilterActiveTodos}
       >
         Active
       </button>

@@ -12,6 +12,10 @@ let todoList = [{
   todo: 'Call to grandma',
   id: '3',
   completed: false
+},{
+  todo: 'Cook pasta',
+  id: '4',
+  completed: true
 }]
 
 let initialState = {
@@ -36,25 +40,44 @@ const todosSlice = createSlice({
     },
 
     toggleTodo(state, action) {
-      const indexTodo = state.allTodos.findIndex(todo => todo.id === action.payload.id);
+      state.allTodos.forEach(todo => {
+        if(todo.id === action.payload.id) {
+          todo.completed = !action.payload.completed
+        }
+      });
 
-      state.allTodos[indexTodo].completed = !action.payload.completed;
+      state.activeTodos.forEach(todo => {
+        if(todo.id === action.payload.id) {
+          todo.completed = !action.payload.completed
+        }
+      });
+
+      state.completedTodos.forEach(todo => {
+        if(todo.id === action.payload.id) {
+          todo.completed = !action.payload.completed
+        }
+      });
     },
 
     deleteTodo(state, action) {
       state.allTodos =  state.allTodos.filter(todo => todo.id !== action.payload.id);
+      state.activeTodos =  state.activeTodos.filter(todo => todo.id !== action.payload.id);
+      state.completedTodos =  state.completedTodos.filter(todo => todo.id !== action.payload.id);
     },
 
-    filterAllTodos(state, action) {
-      return action.payload.todos;
+    filterAllTodos(state) {
+      state.completedTodos = state.allTodos;
+      state.active = 'all'
     },
 
-    filterCompletedTodos(state, action) {
-      return state.todos.filter(todo => todo.completed === true);
+    filterCompletedTodos(state) {
+      state.completedTodos = state.allTodos.filter(todo => todo.completed === true);
+      state.active = 'completed'
     },
 
-    filterActiveTodos(state, action) {
-      return action.payload.todos.filter(todo => todo.completed === false);
+    filterActiveTodos(state) {
+      state.activeTodos = state.allTodos.filter(todo => todo.completed === false);
+      state.active = 'active'
     }
   }
 })
