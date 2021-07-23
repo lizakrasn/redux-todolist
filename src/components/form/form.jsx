@@ -8,6 +8,10 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
+  const handleAddTodo = () => {
+    dispatch(addTodo({title: value}));
+  }
+
   return (
     <div className="form">
       <input
@@ -20,7 +24,7 @@ const Form = () => {
       <button
         type="button"
         className="form__button"
-        onClick={() => dispatch(addTodo({title: value}))}
+        onClick={handleAddTodo}
       >
         Add
       </button>

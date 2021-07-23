@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Todo from '../todo/todo';
 import './todoList.sass'
 
 const TodoList = () => {
-  const dispatch = useDispatch();
-	const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos);
+  console.log(todos)
 
   return (
     <div className="todoList">

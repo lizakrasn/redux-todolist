@@ -14,6 +14,7 @@ let todoList = [{
   completed: false
 }]
 
+
 const todosSlice = createSlice({
   name: 'todos',
   initialState: todoList,
@@ -27,11 +28,35 @@ const todosSlice = createSlice({
       state.push(todo);
     },
 
+    toggleTodo(state, action) {
+      const indexTodo = state.findIndex(todo => todo.id === action.payload.id);
+
+      state[indexTodo].completed = !action.payload.completed;
+    },
+
     deleteTodo(state, action) {
-      
+      return state.filter(todo => todo.id !== action.payload.id)
+    },
+
+    filterAllTodos(state, action) {
+      return action.payload.todos;
+    },
+
+    filterCompletedTodos(state, action) {
+      return state.todos.filter(todo => todo.completed === true);
+    },
+
+    filterActiveTodos(state, action) {
+      return action.payload.todos.filter(todo => todo.completed === false);
     }
   }
 })
 
-export const {addTodo} = todosSlice.actions
+export const {
+  addTodo,
+  toggleTodo,
+  deleteTodo,
+  filterAllTodos,
+  filterCompletedTodos,
+  filterActiveTodos} = todosSlice.actions
 export default todosSlice.reducer
