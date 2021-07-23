@@ -25,6 +25,10 @@ const todosSlice = createSlice({
         completed: false
       }
       state.push(todo);
+    },
+
+    deleteTodo(state, action) {
+      
     }
   }
 })

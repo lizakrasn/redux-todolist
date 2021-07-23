@@ -1,10 +1,10 @@
 .form
   width: 100%
-  max-width: 600px
   display: flex
   justify-content: space-between
   &__input
-    width: 90%
+    max-width: 500px
+    width: 100%
     padding: 10px
     font-size: 16px
     border: 2px solid #2C68D2
@@ -17,11 +17,11 @@
     padding: 5px 10px
     background-color: #15CAAA
     color: white
-    border: 2px solid #15CAAA
+    border: none
     border-radius: 5px
     font-size: 18px
     cursor: pointer
-    transition: border-color 500ms
+    transition: background-color 300ms
 
     &:hover
-      border-color: #2C68D2
+      background-color: darken(#15CAAA, 5%)
