@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.scss';
+import './app.sass';
+import Form from './components/form/form';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <Form />
     </div>
   );
 }
