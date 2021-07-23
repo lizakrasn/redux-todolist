@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [{
+let todoList = [{
   todo: 'Buy milk',
   id: '1',
   completed: false
@@ -14,10 +14,20 @@ const initialState = [{
   completed: false
 }]
 
-export const todosSlice = createSlice({
+const todosSlice = createSlice({
   name: 'todos',
-  initialState: initialState,
+  initialState: todoList,
   reducers: {
-
+    addTodo(state, action) {
+      const todo = {
+        todo: action.payload.title,
+        id: Math.random(),
+        completed: false
+      }
+      state.push(todo);
+    }
   }
 })
+
+export const {addTodo} = todosSlice.actions
+export default todosSlice.reducer
