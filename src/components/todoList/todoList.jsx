@@ -4,8 +4,7 @@ import Todo from '../todo/todo';
 import './todoList.sass'
 
 const TodoList = () => {
-  const todos = useSelector((state) => state.todos);
-  console.log(todos)
+  const todos = useSelector((state) => state.todos.allTodos);
 
   return (
     <div className="todoList">

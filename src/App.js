@@ -1,8 +1,8 @@
 import React from 'react';
 import './app.sass';
-import FilterButtons from './components/filterButtons/filterButtons';
 import Form from './components/form/form';
 import TodoList from './components/todoList/todoList';
+import FilterButtons from './components/filterButtons/filterButtons';
 
 function App() {
   return (

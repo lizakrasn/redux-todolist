@@ -14,10 +14,17 @@ let todoList = [{
   completed: false
 }]
 
+let initialState = {
+  allTodos: todoList,
+  completedTodos: todoList,
+  activeTodos: todoList,
+  active: 'all'
+}
+
 
 const todosSlice = createSlice({
   name: 'todos',
-  initialState: todoList,
+  initialState: initialState,
   reducers: {
     addTodo(state, action) {
       const todo = {
@@ -25,17 +32,17 @@ const todosSlice = createSlice({
         id: Math.random(),
         completed: false
       }
-      state.push(todo);
+      state.allTodos.push(todo);
     },
 
     toggleTodo(state, action) {
-      const indexTodo = state.findIndex(todo => todo.id === action.payload.id);
+      const indexTodo = state.allTodos.findIndex(todo => todo.id === action.payload.id);
 
-      state[indexTodo].completed = !action.payload.completed;
+      state.allTodos[indexTodo].completed = !action.payload.completed;
     },
 
     deleteTodo(state, action) {
-      return state.filter(todo => todo.id !== action.payload.id)
+      state.allTodos =  state.allTodos.filter(todo => todo.id !== action.payload.id);
     },
 
     filterAllTodos(state, action) {
